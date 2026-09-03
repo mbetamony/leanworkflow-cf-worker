@@ -1,0 +1,9 @@
+# Shared secret Literatum authenticates to /__ingest with. Must match
+# leanworkflow/worker/shared-secret in the midtier props.
+INGEST_SECRET="cf-worker-secret-for-testing-only"
+
+# Browser origins allowed to open a realtime socket, comma separated. WebSockets are exempt from CORS
+# and the browser attaches the session cookie regardless of which page opened the socket, so this list
+# is what stops another site reading a logged-in user's event stream. There is no wildcard: an empty
+# or unset value rejects every connection.
+ALLOWED_ORIGINS="https://dev-dc-mbetamony:17070,http://localhost:5173"

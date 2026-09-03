@@ -1,0 +1,43 @@
+
+type Subscription {
+  """
+  Emits an event whenever the submission this connection is bound to changes.
+  """
+  submissionEvents: SubmissionEvent!
+}
+
+type SubmissionEvent {
+  """
+  What changed.
+  """
+  kind: SubmissionEventKind!
+  """
+  The submission that changed.
+  """
+  submissionId: ID!
+  """
+  The step the change concerns, when it concerns a specific step. Where the submission moved, this is
+  the step that has *become* active, not the one it left.
+  """
+  stepId: ID
+  """
+  The submission's document. Populated for DOCUMENT_READY only.
+  """
+  documentId: ID
+}
+
+
+enum SubmissionEventKind {
+  """
+  Something about the submission changed.
+  """
+  SUBMISSION_CHANGED
+  """
+  The submission's document finished uploading to the editor and is now readable.
+  """
+  DOCUMENT_READY
+  """
+  The submission's document failed to upload to the editor.
+  """
+  DOCUMENT_FAILED
+}
